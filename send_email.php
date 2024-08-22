@@ -2,37 +2,30 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get POST data
-    $name = isset($_POST['contactName']) ? strip_tags(trim($_POST['contactName'])) : '';
-    $email = isset($_POST['contactEmail']) ? trim($_POST['contactEmail']) : '';
-    $message = isset($_POST['contactMessage']) ? strip_tags(trim($_POST['contactMessage'])) : '';
-    $subject = $_POST['contactSubject']
+    $name = $_POST['contactName'];
+    $email = $_POST['contactEmail'];
+    $message = $_POST['contactMessage']) ;
+    $subject = $_POST['contactSubject'];
     
-// Start with PHPMailer class
-use PHPMailer\PHPMailer\PHPMailer;
+use Symfony\Component\Mailer\Mailer; 
+use Symfony\Component\Mailer\Transport\Smtp\SmtpTransport; 
+use Symfony\Component\Mime\Email;
+
 require_once './vendor/autoload.php';
-// create a new object
-$mail = new PHPMailer();
-// configure an SMTP
-$mail->isSMTP();
-$mail->Host = 'sandbox.smtp.mailtrap.io';
-$mail->SMTPAuth = true;
-$mail->Username = 'fa17c29e7bf45a';
-$mail->Password = '1668347593e11d';
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-$mail->Port = 587;
-
-$mail->setFrom($email, $name);
-$mail->addAddress('gurisandhucodes@gmail.com', 'Me');
-$mail->Subject =  $subject;
-
-$mail->AltBody = $message;
-
-// send the message
-if(!$mail->send()){
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Message has been sent';
-}
 
 
+$transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
+('sandbox.smtp.mailtrap.io', 587))
+                ->setUsername('fa17c29e7bf45a')
+                ->setPassword('1668347593e11d');
+
+$mailer = new Mailer($transport); 
+
+$email = (new Email())
+            ->from($email, $name)
+            ->to('gurisandhu.codes@gmail.com')
+            ->subject($subject)
+            ->text($message)
+            
+
+$mailer->send($email);
