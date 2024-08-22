@@ -1425,8 +1425,8 @@ header .logo a {
  * --------------------------------------------------------------- 
  */
 @media only screen and (max-width:1024px) {
-	.intro-content h1 {
-		font-size: 7.6rem;
+	.intro-content h2 {
+		font-size: 6.6rem;
 	}
 	.intro-social {
 		font-size: 3rem;
@@ -1439,8 +1439,8 @@ header .logo a {
 	#intro {
 		min-height: 660px;
 	}
-	.intro-content h1 {
-		font-size: 5.2rem;
+	.intro-content h2 {
+		font-size: 4.2rem;
 	}
 	.intro-content h5 {
 		font-size: 1.8rem;
@@ -1459,8 +1459,8 @@ header .logo a {
 	#intro {
 		min-height: 600px;
 	}
-	.intro-content h1 {
-		font-size: 4.6rem;
+	.intro-content h2 {
+		font-size: 2.6rem;
 		margin-bottom: .6rem;
 	}
 	.intro-content h5 {
