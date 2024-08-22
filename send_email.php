@@ -12,8 +12,8 @@ if (!empty($_POST))
 {
   $name = $_POST['contactName'];
   $email = $_POST['contactEmail'];
-  $message = $_POST['ContactMessage'];
-  $subject = $_POST['ContactSubject'];
+  $message = $_POST['contactMessage'];
+  $subject = $_POST['contactSubject'];
 
   
 
@@ -32,7 +32,7 @@ if (!empty($_POST))
             // Set the sender, recipient, subject, and body of the message 
             $mail->setFrom($email, $name);
             $mail->addAddress("gurisandhu.codes@gmail.com");
-            $mail->Subject = $emailSubject;
+            $mail->Subject = $subject;
             $mail->isHTML( isHtml: true);
             $mail->Body = "<p>Name: {$name}</p><p>Email: {$email}</p><p>Message: {$message}</p>";
          
