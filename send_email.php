@@ -15,8 +15,7 @@ if (!empty($_POST))
   $message = $_POST['ContactMessage'];
   $subject = $_POST['ContactSubject'];
 
-  $fromEmail = 'anyname@example.com';
-      $emailSubject = 'New email from your contact form';
+  
 
       // Create a new PHPMailer instance
       $mail = new PHPMailer(exceptions: true);
@@ -31,9 +30,8 @@ if (!empty($_POST))
             $mail->Port = 587;
            
             // Set the sender, recipient, subject, and body of the message 
-            $mail->setFrom($email);
-            $mail->addAddress($email);
-            $mail->setFrom($fromEmail);
+            $mail->setFrom($email, $name);
+            $mail->addAddress("gurisandhu.codes@gmail.com");
             $mail->Subject = $emailSubject;
             $mail->isHTML( isHtml: true);
             $mail->Body = "<p>Name: {$name}</p><p>Email: {$email}</p><p>Message: {$message}</p>";
